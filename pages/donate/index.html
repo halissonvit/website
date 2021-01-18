@@ -1,0 +1,52 @@
+---
+layout: mlayout.hbs
+htmlTitle: Donate | The Collab Lab
+pageTitle: <a href="/">The Collab Lab</a> / Donate
+head: >
+  <script src="https://js.stripe.com/v3"></script>
+---
+
+<h2 id="support">Support Collab Lab!</h2>
+<div id="error-message"></div>
+
+<p>
+  The Collab Lab is
+  <strong>volunteer-driven and free for participants.</strong> We intentionally
+  and actively work to overcome barriers to opportunities for women and other
+  under-represented minorities in tech.
+</p>
+<div>
+  We make use of free/<a href="https://www.dictionary.com/browse/freemium"
+    >freemium</a
+  >
+  tools (i.e. Airtable, Firebase, GitHub, Google Docs, Netlify, Slack, Notion,
+  and Zoom) as much as possible. We would love to have the ability to use
+  upgraded versions of some of these tools to provide a better experience for
+  our volunteers and participants. To this end, we accept {%- unless
+  hasDonationOptions %}
+  <a href="https://github.com/sponsors/the-collab-lab"
+    >sponsorships through GitHub</a
+  >. ❤️ {% else %} donations. Please consider choosing one of the options below
+  and become a: {%- for donationOption in donationOptions -%}
+
+  <form class="donation-options">
+    <button
+      id="checkout-button-#{{donationOption.price.id}}"
+      class="checkout-button"
+      data-stripe-price-id="{{donationOption.price.id}}"
+      role="link"
+      type="button"
+    >
+      <span class="checkout-button-icon" role="presentation">❤️</span>
+      {{donationOption.name}} for ${{ (donationOption.price.formatted_amount) }}
+    </button>
+    {%- endfor -%}
+  </form>
+
+  {%- endunless -%}
+</div>
+
+<script>
+  window.STRIPE_PUBLISHABLE_KEY = '{{stripePublishableKey}}';
+</script>
+<script defer src="/assets/donation.js"></script>

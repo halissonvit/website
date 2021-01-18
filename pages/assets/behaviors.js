@@ -113,8 +113,27 @@ class Gallery {
   }
 }
 
+class Nav {
+  constructor() {
+    this.loaded();
+  }
+
+  loaded() {
+    const pathName = window.location.pathname.split('/')[1];
+    const currentNavLink = document.querySelector(
+      "a[href*='" + pathName + "']",
+    );
+
+    if (currentNavLink) {
+      currentNavLink.parentElement.innerHTML = currentNavLink.textContent;
+      currentNavLink.classList.add('current');
+    }
+  }
+}
+
 function init() {
   let gallery = new Gallery();
+  new Nav();
 }
 
 document.addEventListener('DOMContentLoaded', init);

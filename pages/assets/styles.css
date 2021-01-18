@@ -6,6 +6,8 @@
   --page-width: 800px;
   --base-font-size: 16px;
   --small-font-size: 85%;
+
+  --link-color: blue;
 }
 
 body {
@@ -57,6 +59,10 @@ header nav ul li:last-child {
 }
 header nav ul li:last-child:after {
   content: '';
+}
+header nav ul li a:active,
+header nav ul li a.current {
+  --link-color: black;
 }
 
 footer {
@@ -134,11 +140,11 @@ h2 {
 }
 
 a {
-  color: blue;
+  color: var(--link-color);
   text-decoration: none;
 }
 a:hover {
-  border-bottom: solid 1px blue;
+  border-bottom: solid 1px --var(--link-color);
 }
 
 hr {
@@ -156,13 +162,13 @@ figure.float-right img {
   height: auto;
   width: 100%;
 }
-  /* these images come from the cms so for now they have to be the first element
+/* these images come from the cms so for now they have to be the first element
      on the page, so we use css to push them down the page a little to match the
      images on other pages
    */
-  figure.float-right.image-floated-right img {
-    margin-top: 56px;
-  }
+figure.float-right.image-floated-right img {
+  margin-top: 56px;
+}
 figure.float-right figcaption {
   font-size: var(--small-font-size);
   font-style: italic;
@@ -173,20 +179,77 @@ figure.float-right figcaption {
   margin: 1em 0;
   padding: 0;
 }
-  .tech-talks > li {
-    border-bottom: solid 1px #ccc;
-    margin: 1rem 0;
-    padding-bottom: 1rem;
-  }
-    .tech-talks > li:first-child {
-      border-top: solid 1px #ccc;
-    }
-  .tech-talks h3 {
-    margin: 1.5rem 0;
-  }
-    .tech-talks h3 em {
-      font-weight: normal;
-    }
+.tech-talks > li {
+  border-bottom: solid 1px #ccc;
+  margin: 1rem 0;
+  padding-bottom: 1rem;
+}
+.tech-talks > li:first-child {
+  border-top: solid 1px #ccc;
+}
+.tech-talks h3 {
+  margin: 1.5rem 0;
+}
+.tech-talks h3 em {
+  font-weight: normal;
+}
+
+.donation-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px 0;
+}
+
+.checkout-button .checkout-button-icon {
+  transition: all 300ms ease-in-out;
+  opacity: 1;
+  padding: 1.2em 0.2em;
+}
+
+.checkout-button:hover .checkout-button-icon,
+.checkout-button:focus .checkout-button-icon,
+.checkout-button:active .checkout-button-icon {
+  opacity: 0;
+}
+
+.checkout-button {
+  --color: #e74c3c;
+  box-sizing: border-box;
+  appearance: none;
+  background-color: transparent;
+  border: 2px solid var(--color);
+  border-radius: 0.6em;
+  color: var(--color);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.8rem;
+  font-weight: 400;
+  line-height: 1;
+  padding: 0 0.5em;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.checkout-button:hover,
+.checkout-button:focus,
+.checkout-button:active {
+  color: #fff;
+  outline: 0;
+  box-shadow: 0 0 40px 40px var(--color) inset;
+}
+
+.checkout-button:active {
+  --color: #a70c2c;
+}
+
+.checkout-button {
+  -webkit-transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+  transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+}
 
 /* small screens */
 /* under 820px wide, adjust margins, fix the footer and tweak how we display the carousel */

@@ -1,0 +1,30 @@
+document.addEventListener('DOMContentLoaded', function () {
+  (function () {
+    // initialize Stripe using your publishable key
+    const stripe = Stripe(window.STRIPE_PUBLISHABLE_KEY);
+
+    // find the buttons and error message elements
+    const checkoutButtons = document.getElementsByClassName('checkout-button');
+    const errorMessage = document.getElementById('error-message');
+
+    Array.from(checkoutButtons).forEach((checkoutButton) => {
+      // on click, send the user to Stripe Checkout to process the donation
+      checkoutButton.addEventListener('click', () => {
+        const price = checkoutButton.dataset['stripePriceId'];
+
+        stripe
+          .redirectToCheckout({
+            lineItems: [{ price, quantity: 1 }],
+            mode: 'payment',
+            successUrl: `${window.location.origin}/donate/success`,
+            cancelUrl: window.location.origin,
+          })
+          .then(function (result) {
+            if (result.error) {
+              errorMessage.textContent = result.error.message;
+            }
+          });
+      });
+    });
+  })();
+});

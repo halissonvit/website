@@ -1,17 +1,19 @@
 <!doctype html>
 <html lang="en-US">
-  <head>
-    <meta charset="UTF-8">
-    <title>{{ htmlTitle }}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com/">
-    <link rel="preconnect" href="https://fonts.googleapis.com/" crossorigin>
-    <link rel="dns-prefetch" href="https://fonts.googleapis.com/">
-    <meta name="description" content="Gain practical experience by working remotely on real world projects with other early-career developers.">
-    <link href="/assets/styles.css" rel="stylesheet">
-    <script defer src="/assets/behaviors.js"></script>
-    <script type="application/ld+json">
+
+<head>
+  <meta charset="UTF-8">
+  <title>{{ htmlTitle }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com/">
+  <link rel="preconnect" href="https://fonts.googleapis.com/" crossorigin>
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com/">
+  <meta name="description"
+    content="Gain practical experience by working remotely on real world projects with other early-career developers.">
+  <link href="/assets/styles.css" rel="stylesheet">
+  <script defer src="/assets/behaviors.js"></script>
+  <script type="application/ld+json">
     {
       "@context": "http://www.schema.org",
       "@type": "EducationalOrganization",
@@ -21,21 +23,32 @@
       "description": "Gain practical experience by working remotely on real world projects with other early-career developers."
     }
     </script>
-  </head>
-  <body>
-    <header>
-      <h1>{{{pageTitle}}}</h1>
-      <nav>
-        {{{navigation}}}
-      </nav>
-      {{{pageSubTitle}}}
-    </header>
-    <main>
-      {{{ content }}}
-    </main>
-    <footer>
-      <p>Copyright &copy; 2019 – 2020 The Collab Lab. All rights reserved.</p>
-      <p>All participants agree to adhere to our <a href="/code-of-conduct/">Code of Conduct</a>.</p>
-    </footer>
-  </body>
+  {{{ head }}}
+</head>
+
+<body>
+  <header>
+    <h1>{{{pageTitle}}}</h1>
+    <nav>
+      <ul>
+        <li><a href="/about-us/">About</a></li>
+        <li><a href="/who-we-are/">Who We Are</a></li>
+        <li><a href="/apply/">Apply</a></li>
+        <li><a href="/mentor/">Mentor</a></li>
+        <li><a href="/tech-talks/">Tech Talks</a></li>
+        <li><a href="/code-of-conduct/">Code of Conduct</a></li>
+        <li><a href="/donate/">Donate ❤️</a></li>
+      </ul>
+    </nav>
+    {{{pageSubTitle}}}
+  </header>
+  <main>
+    {{{ content }}}
+  </main>
+  <footer>
+    <p>Copyright &copy; 2019 – 2020 The Collab Lab. All rights reserved.</p>
+    <p>All participants agree to adhere to our <a href="/code-of-conduct/">Code of Conduct</a>.</p>
+  </footer>
+</body>
+
 </html>
